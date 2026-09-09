@@ -119,8 +119,10 @@ docker build -t hds-practical .
 docker run --rm hds-practical
 ```
 
-`docker run` executes `src/analysis.py` inside the image and should print
-the same summary as the native run above.
+`docker run` executes `src/analysis.py` inside the image and prints the
+same summary as the native run above. Verified with Docker 29.x: the
+container's stdout is byte-for-byte identical to `uv run python
+src/analysis.py` run natively.
 
 ## Comments for Instructor
 
@@ -130,7 +132,9 @@ the same summary as the native run above.
 - **Container:** the `Dockerfile` is included (undergrad bonus). It follows
   the `uv` image pattern (`FROM ghcr.io/astral-sh/uv:python3.13-bookworm-slim`,
   `COPY` the lock files, `uv sync --locked`, `COPY` the code, `CMD` runs the
-  script). I was **not able to verify `docker build` / `docker run` on my own
-  machine** — my Docker Desktop Linux engine would not start (client works,
-  daemon never came up). The environment file itself is fully verified by
-  the clean-rebuild test above.
+  script). Verified on my machine:
+
+  ```bash
+  docker build -t hds-practical .
+  docker run --rm hds-practical   # same output as `uv run python src/analysis.py`
+  ```
