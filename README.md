@@ -15,16 +15,16 @@ assistance used along the way.
 | `data/patients.csv` | Toy patient roster (10 rows): `patient_id, age, site, systolic_bp, cohort`. The only input. |
 | `src/analysis.py` | Reads `data/patients.csv`, prints a summary, writes `data/age_summary.csv`. |
 | `pyproject.toml` | Project + dependency declaration (`pandas`). |
-| `uv.lock` | Fully-resolved lockfile — the file that makes the environment reproducible. |
-| `.python-version` | Pins the interpreter to Python 3.13. |
+| `uv.lock` | Fully resolved lockfile which makes the file that makes the environment reproducible. |
+| `.python-version` | Shows that I used Python 3.13. |
 | `Dockerfile` | Builds a container that reproduces the environment at the OS level. |
 | `AI_USAGE.md` | Which AI model was used, for what, and how its suggestions were verified. |
 
 ## Prerequisites
 
-- **[`uv`](https://docs.astral.sh/uv/getting-started/installation/)** (tested with 0.10.4). That's it —
+- **[`uv`](https://docs.astral.sh/uv/getting-started/installation/)** (tested with 0.10.4). That's it:
   `uv` downloads the correct Python (3.13) itself; you do **not** need conda,
-  a system Python, or a manually-created virtualenv.
+  a system Python, or a manually created virtualenv.
 - Optional: **Docker** (tested with 29.x) if you want to run the container instead.
 
 Install `uv` if you don't have it:
@@ -103,8 +103,7 @@ wrote data/age_summary.csv
 
 ## Verify reproducibility (the "new teammate" test)
 
-Delete the environment and rebuild it from nothing but the lockfile — the
-same thing a grader does:
+Delete the environment and rebuild it from nothing but the lockfile.
 
 ```bash
 rm -rf .venv
@@ -127,7 +126,7 @@ src/analysis.py` run natively.
 ## Comments for Instructor
 
 - **Environment tool:** `uv` (`pyproject.toml` + `uv.lock`), which the lab
-  lists as an accepted alternative to conda/`environment.yml`. conda/mamba
+  lists as an alternative to conda/`environment.yml`. conda/mamba
   is not installed on my machine; `uv` is.
 - **Container:** the `Dockerfile` is included (undergrad bonus). It follows
   the `uv` image pattern (`FROM ghcr.io/astral-sh/uv:python3.13-bookworm-slim`,
