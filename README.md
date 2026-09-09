@@ -15,7 +15,7 @@ assistance used along the way.
 | `data/patients.csv` | Toy patient roster (10 rows): `patient_id, age, site, systolic_bp, cohort`. The only input. |
 | `src/analysis.py` | Reads `data/patients.csv`, prints a summary, writes `data/age_summary.csv`. |
 | `pyproject.toml` | Project + dependency declaration (`pandas`). |
-| `uv.lock` | Fully resolved lockfile which makes the file that makes the environment reproducible. |
+| `uv.lock` | Fully resolved lockfile — the file that makes the environment reproducible. |
 | `.python-version` | Shows that I used Python 3.13. |
 | `Dockerfile` | Builds a container that reproduces the environment at the OS level. |
 | `AI_USAGE.md` | Which AI model was used, for what, and how its suggestions were verified. |

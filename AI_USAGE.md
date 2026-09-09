@@ -54,8 +54,8 @@ so I should not use it here.
 Claude said the fix depends on intent: if I actually needed old numpy I'd
 have to drop the pandas 3 requirement; since I don't, I just took out
 the bad pin and let `uv` resolve numpy transitively from
-pandas. It suggested that because `uv add` is on a failed
-resolution, `pyproject.toml` was probably already untouched and I might
+pandas. It suggested that because `uv add` is atomic when a resolution
+fails, `pyproject.toml` was probably already untouched and I might
 not need to undo anything.
 
 ### How I verified before trusting it
@@ -71,7 +71,9 @@ not need to undo anything.
    a known-good state.
 
 I kept: the explanation of "why" it was unsatisfiable, and the advice not
-to use `--frozen`. I didn't reject anything immediately, but I checked it after claude tried. 
+to use `--frozen`. I didn't reject anything immediately, but I verified it
+myself after Claude suggested it rather than taking it on faith.
+
 ---
 
 ## Problem 2: lockfile out of date (`uv sync --locked`)
